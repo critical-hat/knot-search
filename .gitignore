@@ -2,3 +2,5 @@ __pycache__/
 cleaned/
 to-clean/
 raw-data/
+.ipynb_checkpoints/
+temp/
