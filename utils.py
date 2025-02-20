@@ -75,6 +75,8 @@ def get_knot_id(sage_id: str) -> str:
     The reverse and concordance inverse of prime knots, should they appear, are
     marked 'r' and 'c' respectively, similarly to the mirror.
 
+    If the provided string is "-", it is returned as is.
+
     Parameters:
         sage_id: the knot id in Sage's format
 
@@ -82,6 +84,10 @@ def get_knot_id(sage_id: str) -> str:
         str: a string of the format described above.
     """
     out = sage_id
+
+    if out == "-":
+        return out
+
     while '^' in out:
         original = out
         pos = original.find('^')
