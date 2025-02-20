@@ -104,7 +104,12 @@ def get_knot_id(sage_id: str) -> str:
         out = original[:pos] + extras + original[num_right:]
     
     if not '*' in out:
-        out = re.findall(r"\['K(.+?)'\]", out)[0]
+        try:
+            out = re.findall(r"'K(.+?)'", out)[0]
+        except IndexError:
+            print(f"Failed to find knot id in string \"{sage_id}\", returning as is\n", end='')
+            return sage_id
+
     else:
         matches = re.findall(r"'K(.+?)'", out)
         out = '#'.join(matches)
